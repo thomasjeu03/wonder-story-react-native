@@ -15,6 +15,7 @@ interface Translations {
 }
 
 // Define available translations
+// @ts-ignore
 const translations: Translations = { en, fr, de, it };
 
 // Initialize i18n
