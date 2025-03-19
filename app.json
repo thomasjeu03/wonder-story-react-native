@@ -2,9 +2,9 @@
   "expo": {
     "name": "Wonder Story",
     "description": "Make bedtime magical with AI-powered stories",
-    "slug": "WonderStory",
-    "owner": "Thomas JEU",
-    "version": "1.0.0",
+    "slug": "wonder-story",
+    "owner": "thomas_jeu",
+    "version": "1.0.1",
     "orientation": "portrait",
     "primaryColor": "#105ef5",
     "platforms": [
@@ -24,6 +24,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "app.wonder-story.Wonder-Story",
+      "buildNumber": "26",
       "icon": {
         "light": "./assets/icons/icon.png",
         "dark": "./assets/icons/icon-dark.png",
@@ -91,6 +92,14 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "b13acc3b-0c80-4b27-b319-4709b3f09a32"
+      }
     }
   }
 }
