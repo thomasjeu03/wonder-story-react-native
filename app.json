@@ -1,0 +1,96 @@
+{
+  "expo": {
+    "name": "Wonder Story",
+    "description": "Make bedtime magical with AI-powered stories",
+    "slug": "WonderStory",
+    "owner": "caddev",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "primaryColor": "#105ef5",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "splash": {
+      "image": "./assets/icons/splash-icon-light.png",
+      "backgroundColor": "#ffffff",
+      "resizeMode": "contain"
+    },
+    "icon": "./assets/icons/icon.png",
+    "scheme": "myapp",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "app.wonder-story.Wonder-Story",
+      "icon": {
+        "light": "./assets/icons/icon.png",
+        "dark": "./assets/icons/icon-dark.png",
+        "tinted": "./assets/icons/icon-tinted.png"
+      },
+      "splash": {
+        "image": "./assets/icons/splash-icon-light.png",
+        "backgroundColor": "#ffffff",
+        "dark": {
+          "image": "./assets/icons/splash-icon-dark.png",
+          "backgroundColor": "#000000"
+        }
+      },
+      "infoPlist": {
+        "CFBundleAllowMixedLocalizations": true,
+        "CFBundleURLTypes": [
+          {
+            "CFBundleURLSchemes": []
+          }
+        ]
+      },
+      "config": {
+        "usesNonExemptEncryption": false
+      }
+    },
+    "locales": {
+      "fr": "./languages/fr.json",
+      "en": "./languages/en.json",
+      "de": "./languages/de.json",
+      "it": "./languages/it.json"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icons/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "app.wonder-story.Wonder-Story"
+    },
+    "web": {
+      "name": "Wonder Story",
+      "shortName": "Wonder Story",
+      "bundler": "metro",
+      "output": "static",
+      "favicon": "./assets/icons/icon.png"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-localization"
+      ],
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/icons/splash-icon-light.png",
+          "imageWidth": 200,
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "dark": {
+            "image": "./assets/icons/splash-icon-dark.png",
+            "backgroundColor": "#000000"
+          }
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}
