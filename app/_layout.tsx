@@ -7,15 +7,12 @@ import Toast, { BaseToast, ErrorToast, ToastShowParams } from "react-native-toas
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Colors } from "@/constants/Colors";
 import { Stack } from "expo-router";
-import { useEffect } from 'react';
 
-export default function RootLayout() {
+SplashScreen.preventAutoHideAsync();
+
+export default function App() {
     const colorScheme = useColorScheme() || 'light';
     const safeArea = useSafeAreaInsets();
-
-    useEffect(() => {
-        SplashScreen.preventAutoHideAsync();
-    }, []);
 
     const toastConfig = {
         success: (props: ToastShowParams) => (
@@ -76,6 +73,10 @@ export default function RootLayout() {
             />
         ),
     };
+
+    setTimeout(() => {
+        SplashScreen.hide();
+    }, 1000)
 
     return (
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
