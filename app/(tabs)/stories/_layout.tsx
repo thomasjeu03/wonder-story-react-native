@@ -1,9 +1,8 @@
-import {Link, Stack} from "expo-router";
+import {Stack} from "expo-router";
 import {Colors} from "@/constants/Colors";
 import {useColorScheme} from "@/hooks/useColorScheme";
 import {useTranslations} from "@/contexts/LangueProvider";
 import {StyleSheet} from "react-native";
-import {CirclePlus} from "lucide-react-native";
 
 const Layout = () => {
     const colorScheme = useColorScheme();
@@ -23,28 +22,10 @@ const Layout = () => {
                     contentStyle: {
                         backgroundColor: Colors[colorScheme ?? 'light'].background
                     },
-                    headerRight: () => (
-                        <Link href="/stories/create">
-                            <CirclePlus color={Colors[colorScheme ?? 'light'].tint} />
-                        </Link>
-                    ),
                 }}
             />
             <Stack.Screen
                 name="[id]"
-                options={{
-                    presentation: 'card',
-                    headerTitle: '',
-                    headerBackTitle: t('stories'),
-                    headerShadowVisible: false,
-                    headerTintColor: Colors[colorScheme ?? 'light'].tint,
-                    contentStyle: {
-                        backgroundColor: Colors[colorScheme ?? 'light'].background
-                    },
-                }}
-            />
-            <Stack.Screen
-                name="create"
                 options={{
                     presentation: 'card',
                     headerTitle: '',

@@ -67,5 +67,9 @@
   "added": "Aggiunto",
   "not-added": "non aggiunto",
   "deleted": "Eliminato",
-  "updated": "Aggiornato"
+  "updated": "Aggiornato",
+  "new-story": "Nuova storia",
+  "story": "Storia",
+  "stories": "Storie",
+  "generate": "Genera"
 }

@@ -1,18 +1,23 @@
 import { useLocalSearchParams } from 'expo-router';
-import {View, StyleSheet, SafeAreaView} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {Colors} from "@/constants/Colors";
 import {useColorScheme} from "@/hooks/useColorScheme";
+import {useTranslations} from "@/contexts/LangueProvider";
 
-export default function ProjectDetails() {
+export default function StoryDetail() {
     const { id } = useLocalSearchParams();
     const colorScheme = useColorScheme();
+    const { t } = useTranslations();
+
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView
+            contentInsetAdjustmentBehavior="automatic"
+        >
             <View style={styles.container}>
 
             </View>
-        </SafeAreaView>
+        </ScrollView>
     );
 }
 

@@ -5,7 +5,7 @@ import { HapticTab } from '@/components/HapticTab';
 import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
-import {Home, SquareKanban} from "lucide-react-native";
+import {Sparkles, BookOpenText} from "lucide-react-native";
 import {useTranslations} from "@/contexts/LangueProvider";
 
 export default function TabLayout() {
@@ -30,10 +30,10 @@ export default function TabLayout() {
         tabBarAllowFontScaling: false
       }}>
         <Tabs.Screen name="index" options={{
-            title: t('home'),
-            tabBarLabel: t('home'),
+            title: t('generate'),
+            tabBarLabel: t('generate'),
             tabBarIcon: ({ color, size }) =>
-                <Home size={size} color={color} />
+                <Sparkles size={size} color={color} />
           }}
         />
         <Tabs.Screen name="stories" options={{
@@ -41,7 +41,7 @@ export default function TabLayout() {
             tabBarLabel: t('stories'),
             href: '/stories',
             tabBarIcon: ({ color, size }) =>
-                <SquareKanban size={size} color={color} />
+                <BookOpenText size={size} color={color} />
           }}
         />
     </Tabs>

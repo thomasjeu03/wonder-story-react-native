@@ -1,27 +1,29 @@
-import { ScrollView, StyleSheet, useColorScheme, View} from 'react-native';
+import { SafeAreaView, StyleSheet, useColorScheme, View} from 'react-native';
 
 import {useTranslations} from "@/contexts/LangueProvider";
-import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {Colors} from "@/constants/Colors";
+import {ThemedText} from "@/components/ui/ThemedText";
 
-export default function index() {
+export default function HomeScreen() {
     const colorScheme = useColorScheme();
     const { t } = useTranslations();
 
-    const safeAreaBottom = useSafeAreaInsets()
-
     return (
         <>
-            <ScrollView
+            <SafeAreaView
                 contentInsetAdjustmentBehavior="automatic"
             >
-                <View style={{ gap: 16, paddingTop: 12, paddingHorizontal: 16, paddingBottom: safeAreaBottom.bottom + 32 }}>
+                <View style={styles.container}>
 
                 </View>
-            </ScrollView>
+            </SafeAreaView>
         </>
     )
 }
 
 const styles = StyleSheet.create({
-
+    container: {
+        padding: 16,
+        gap: 8
+    }
 });

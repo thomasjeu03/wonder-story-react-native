@@ -8,14 +8,14 @@ interface CTAProps {
     label: string;
     style?: object;
     icon?: string;
-    variant?: 'primary' | 'secondary' | 'danger';
+    variant?: 'primary' | 'secondary' | 'danger' | 'base';
     iconPlacement?: 'left' | 'right';
     iconSize?: number;
     disabled?: boolean;
     onPress: () => void;
 }
 
-const CTA: React.FC<CTAProps> = ({ label, style, icon, variant = 'primary', onPress, iconPlacement = 'left', iconSize = 24, disabled = false }) => {
+const CTA: React.FC<CTAProps> = ({ label, style, icon, variant = 'base', onPress, iconPlacement = 'left', iconSize = 24, disabled = false }) => {
     const colorScheme = useColorScheme();
     // @ts-ignore
     const LucideIcon = icons[icon]
@@ -25,6 +25,7 @@ const CTA: React.FC<CTAProps> = ({ label, style, icon, variant = 'primary', onPr
             disabled={disabled}
             style={[
                 styles.button,
+                variant === 'base' ? { backgroundColor: Colors[colorScheme ?? 'light'].text } : undefined,
                 variant === 'primary' ? { backgroundColor: Colors[colorScheme ?? 'light'].tint } : undefined,
                 variant === 'secondary' ? { backgroundColor: Colors[colorScheme ?? 'light'].secondary } : undefined,
                 variant === 'danger' ? { backgroundColor: Colors[colorScheme ?? 'light'].danger } : undefined,
