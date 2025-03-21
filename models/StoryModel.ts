@@ -7,5 +7,4 @@ export type Story = {
     time: number,
     genres: Array<string>,
     moral: boolean,
-    inputCustom: string
 }
