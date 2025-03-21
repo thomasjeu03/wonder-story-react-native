@@ -7,6 +7,7 @@ import {Image} from "expo-image";
 export default function HomeScreen() {
     const { t } = useTranslations();
 
+    // TODO: animations + generate story form
     return (
         <>
             <SafeAreaView
