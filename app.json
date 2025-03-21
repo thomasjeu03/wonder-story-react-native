@@ -4,7 +4,7 @@
     "description": "Make bedtime magical with AI-powered stories",
     "slug": "wonder-story",
     "owner": "thomas_jeu",
-    "version": "1.1",
+    "version": "2.0.0",
     "orientation": "portrait",
     "primaryColor": "#105ef5",
     "platforms": [
