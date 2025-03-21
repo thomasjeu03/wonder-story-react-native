@@ -10,12 +10,7 @@ const Layout = () => {
             <Stack.Screen
                 name="index"
                 options={{
-                    headerTitle: 'Wonder Story',
-                    headerLargeStyle: {
-                        backgroundColor: Colors[colorScheme ?? 'light'].background,
-                    },
-                    headerLargeTitle: true,
-                    headerLargeTitleShadowVisible: false,
+                    headerShown: false,
                     contentStyle: {
                         backgroundColor: Colors[colorScheme ?? 'light'].background
                     },

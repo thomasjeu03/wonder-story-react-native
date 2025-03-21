@@ -71,5 +71,8 @@
   "new-story": "Neue Geschichte",
   "story": "Geschichte",
   "stories": "Geschichten",
-  "generate": "Generieren"
+  "generate": "Generieren",
+  "home": {
+    "welcome": "Hier beginnen wunderbare Geschichten"
+  }
 }

@@ -35,11 +35,11 @@ const CTA: React.FC<CTAProps> = ({ label, style, icon, variant = 'base', onPress
             onPress={onPress}
         >
             {icon && LucideIcon && iconPlacement === 'left' && (
-                <LucideIcon name={icon} size={iconSize} color="white" style={styles.icon} />
+                <LucideIcon name={icon} size={iconSize} color={Colors[colorScheme ?? 'light'].background} style={styles.icon} />
             )}
-            <Text style={styles.text}>{label}</Text>
+            <Text style={[styles.text, {color: Colors[colorScheme ?? 'light'].background}]}>{label}</Text>
             {icon && LucideIcon && iconPlacement === 'right' && (
-                <LucideIcon name={icon} size={iconSize} color="white" style={styles.icon} />
+                <LucideIcon name={icon} size={iconSize} color={Colors[colorScheme ?? 'light'].background} style={styles.icon} />
             )}
         </TouchableOpacity>
     );
@@ -56,11 +56,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 14,
         borderRadius: 12,
         borderWidth: 2,
+        borderStyle: 'solid',
         borderColor: 'rgba(255,255,255,0.5)',
     },
     text: {
         color: 'white',
         fontSize: 20,
+        fontWeight: 'bold'
     },
     icon:{}
 });

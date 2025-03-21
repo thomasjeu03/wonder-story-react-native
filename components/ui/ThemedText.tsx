@@ -41,39 +41,48 @@ const styles = StyleSheet.create({
   default: {
     fontSize: 16,
     lineHeight: 16,
+    fontWeight: '500',
   },
   title: {
     fontSize: 34,
     lineHeight: 34,
+    fontWeight: 'bold',
   },
   title2: {
     fontSize: 24,
     lineHeight: 24,
+    fontWeight: 'bold',
   },
   title3: {
     fontSize: 22,
     lineHeight: 22,
+    fontWeight: '600',
   },
   title4: {
     fontSize: 20,
     lineHeight: 20,
+    fontWeight: '600',
   },
   title5: {
     fontSize: 18,
     lineHeight: 18,
+    fontWeight: '600',
   },
   gray: {
     fontSize: 16,
     lineHeight: 16,
     opacity: 0.5,
+    fontWeight: '500',
   },
   caption: {
     fontSize: 12,
     lineHeight: 12,
+    fontWeight: '500',
   },
   link: {
     fontSize: 16,
     lineHeight: 16,
-    color: '#105ef5',
+    color: '#BF40BF',
+    fontWeight: '600',
   },
 });
