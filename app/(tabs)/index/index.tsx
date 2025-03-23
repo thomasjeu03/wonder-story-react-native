@@ -96,19 +96,21 @@ export default function HomeScreen() {
                         <ThemedText type="title2" style={{marginTop: 4}}>Wonder Story</ThemedText>
                     </View>
                     {step === 1 && (
-                        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center', gap: 32, width: '100%' }}>
+                        <View style={{flex: 2/3, alignItems: 'center', justifyContent: 'center', gap: 32, width: '100%' }}>
                             <ThemedText type="title3" style={{textAlign: 'center'}}>{t('home.welcome')}</ThemedText>
                             <TextInput
                                 placeholder={t('name')}
                                 value={data.mainCaracter}
                                 onChangeText={(text) => setData({ ...data, mainCaracter: text })}
                             />
-                            <CTA
-                                icon={"Sparkles"}
-                                disabled={loading}
-                                label={t('generate')}
-                                onPress={handleSubmit}
-                            />
+                            {data.mainCaracter && (
+                                <CTA
+                                    icon={"Sparkles"}
+                                    disabled={loading}
+                                    label={t('generate')}
+                                    onPress={handleSubmit}
+                                />
+                            )}
                         </View>
                     )}
                 </View>

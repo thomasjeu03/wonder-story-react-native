@@ -30,7 +30,7 @@ export default function StoryCard({id} : {id: number}) {
             style={[styles.card, {backgroundColor: Colors[colorScheme ?? 'light'].inputBackground}]}
         >
             {title ? (
-                <ThemedText type="title3">
+                <ThemedText type="title4">
                     {title}
                 </ThemedText>
             ):(
