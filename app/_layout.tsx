@@ -84,7 +84,14 @@ export default function App() {
             <TranslationProvider>
                 <UserProvider>
                     <Stack>
-                        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                        <Stack.Screen name="index" options={{ headerShown: false }} />
+                        <Stack.Screen
+                            name="[id]"
+                            options={{
+                                presentation: 'modal',
+                                headerShown: false,
+                            }}
+                        />
                     </Stack>
                     <StatusBar style="auto" />
                     <Toast topOffset={0} visibilityTime={5000} config={toastConfig} />

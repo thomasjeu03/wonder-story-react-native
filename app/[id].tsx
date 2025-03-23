@@ -89,7 +89,7 @@ export default function StoryDetail() {
                         {story}
                     </Markdown>
                 ):(
-                    <ActivityIndicator size="large" style={{marginVertical: 16}} />
+                    <ActivityIndicator size="large" style={{ marginVertical: 16}} />
                 )}
             </View>
         </ScrollView>
@@ -99,7 +99,7 @@ export default function StoryDetail() {
 const styles = StyleSheet.create({
     container: {
         padding: 16,
-        paddingBottom: 80,
+        paddingVertical: 32,
         gap: 8
     },
 });

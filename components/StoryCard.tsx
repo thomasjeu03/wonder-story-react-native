@@ -1,9 +1,9 @@
 import {useEffect, useState} from "react";
-import {getStory} from "@/app/(tabs)/stories/[id]";
 import {router} from "expo-router";
 import {ThemedText} from "@/components/ui/ThemedText";
 import {ActivityIndicator, Pressable, StyleSheet, useColorScheme} from "react-native";
 import {Colors} from "@/constants/Colors";
+import {getStory} from "@/app/[id]";
 
 export default function StoryCard({id} : {id: number}) {
     const [title, setTitle] = useState<string>('')
@@ -23,7 +23,7 @@ export default function StoryCard({id} : {id: number}) {
     return (
         <Pressable onPress={() => {
             router.push({
-                pathname: '/stories/[id]',
+                pathname: '/[id]',
                 params: { id },
             })
         }}

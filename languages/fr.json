@@ -72,6 +72,9 @@
   "story": "Histoire",
   "stories": "Histoires",
   "generate": "Générer",
+  "age": "Age",
+  "yearold": "ans",
+  "time": "Durée",
   "home": {
     "welcome": "De merveilleuses histoires commencent ici"
   }

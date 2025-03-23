@@ -23,12 +23,11 @@ export default function StoriesScreen() {
     return (
         <ScrollView
             contentInsetAdjustmentBehavior="automatic"
+            style={{ height: "100%" }}
         >
             <View style={styles.container}>
                 {/*@ts-ignore*/}
-                {storyIds.map((id: string, index: string) => (
-                    <StoryCard key={index} id={id?.id} />
-                ))}
+                {storyIds.map((id: string, index: string) => (<StoryCard key={index} id={id?.id} />))}
             </View>
         </ScrollView>
     );
@@ -37,7 +36,7 @@ export default function StoriesScreen() {
 const styles = StyleSheet.create({
     container: {
         padding: 16,
-        gap: 8
+        gap: 12
     }
 });
 
