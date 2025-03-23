@@ -47,7 +47,7 @@ const CTA: React.FC<CTAProps> = ({ label, style, icon, variant = 'base', onPress
 
 const styles = StyleSheet.create({
     button: {
-        width: '100%',
+        width: 'auto',
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',

@@ -7,6 +7,7 @@ import Toast, { BaseToast, ErrorToast, ToastShowParams } from "react-native-toas
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Colors } from "@/constants/Colors";
 import { Stack } from "expo-router";
+import {UserProvider} from "@/contexts/UserProvider";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -81,11 +82,13 @@ export default function App() {
     return (
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <TranslationProvider>
-                <Stack>
-                    <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                </Stack>
-                <StatusBar style="auto" />
-                <Toast topOffset={0} visibilityTime={5000} config={toastConfig} />
+                <UserProvider>
+                    <Stack>
+                        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+                    </Stack>
+                    <StatusBar style="auto" />
+                    <Toast topOffset={0} visibilityTime={5000} config={toastConfig} />
+                </UserProvider>
             </TranslationProvider>
         </ThemeProvider>
     );

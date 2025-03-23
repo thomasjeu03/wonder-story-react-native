@@ -6,7 +6,7 @@
     "owner": "thomas_jeu",
     "version": "2.0.0",
     "orientation": "portrait",
-    "primaryColor": "#105ef5",
+    "primaryColor": "#BF40BF",
     "platforms": [
       "ios",
       "android",
@@ -42,7 +42,9 @@
         "CFBundleAllowMixedLocalizations": true,
         "CFBundleURLTypes": [
           {
-            "CFBundleURLSchemes": []
+            "CFBundleURLSchemes": [
+              "com.googleusercontent.apps.198194854795-c0qqbk2cj30hknuc3p7ms65gulmm0imq"
+            ]
           }
         ]
       },
@@ -61,7 +63,7 @@
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "app.wonder-story.Wonder-Story"
+      "package": ""
     },
     "web": {
       "name": "Wonder Story",
