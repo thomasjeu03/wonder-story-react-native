@@ -71,8 +71,7 @@ export default function HomeScreen() {
                 const storyIds = await AsyncStorage.getItem("storyIds");
                 const parsedStoryIds = storyIds ? JSON.parse(storyIds) : [];
                 await AsyncStorage.setItem("storyIds", JSON.stringify([{id : response.data.id}, ...parsedStoryIds]));
-                // @ts-ignore
-                navigation.navigate(`${response.data.id}`);
+                setTab('stories')
             } else {
                 Alert.alert(t('common.error'), 'Invalid response from server',)
                 throw new Error('Invalid response from server');
