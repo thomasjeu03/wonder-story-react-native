@@ -15,7 +15,8 @@
     "create": "Crea",
     "version": "Versione",
     "authenticate-error": "Errore di autenticazione",
-    "back": "Indietro"
+    "back": "Indietro",
+    "next": "Avanti"
   },
   "lets-go": "Andiamo!",
   "not-that-fast": "Non così in fretta!",

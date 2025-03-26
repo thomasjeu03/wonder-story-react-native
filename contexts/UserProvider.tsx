@@ -17,6 +17,8 @@ interface UserContextType {
     isPremium: boolean;
     fetchUser: (token: string) => Promise<void>;
     logout: () => Promise<void>;
+    currentStep: number;
+    setCurrentStep: (step: number) => void;
 }
 
 const UserContext = createContext<UserContextType | undefined>(undefined);
@@ -24,6 +26,7 @@ const UserContext = createContext<UserContextType | undefined>(undefined);
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const [isPremium, setIsPremium] = useState(false);
+    const [currentStep, setCurrentStep] = useState(0);
 
     const fetchUser = async (token: string) => {
         try {
@@ -48,7 +51,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     return (
-        <UserContext.Provider value={{ user, isPremium, fetchUser, logout }}>
+        <UserContext.Provider value={{ currentStep, setCurrentStep, user, isPremium, fetchUser, logout }}>
             {children}
         </UserContext.Provider>
     );

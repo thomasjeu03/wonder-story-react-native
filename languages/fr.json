@@ -15,7 +15,8 @@
     "create": "Créer",
     "version": "Version",
     "authenticate-error": "L'authentification a échoue.",
-    "back": "Retour"
+    "back": "Retour",
+    "next": "Suivant"
   },
   "lets-go": "C'est parti",
   "not-that-fast": "Pas si vite",

@@ -15,7 +15,8 @@
     "create": "Create",
     "version": "Version",
     "authenticate-error": "Authentication error",
-    "back": "Back"
+    "back": "Back",
+    "next": "Next"
   },
   "lets-go": "Let's go!",
   "not-that-fast": "Not that fast!",
