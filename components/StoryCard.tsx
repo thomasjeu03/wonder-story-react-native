@@ -5,7 +5,7 @@ import {ActivityIndicator, Pressable, StyleSheet, useColorScheme} from "react-na
 import {Colors} from "@/constants/Colors";
 import {getStory} from "@/app/[id]";
 
-export default function StoryCard({id} : {id: number}) {
+export default function StoryCard({id, story} : {id: number, story: string}) {
     const [title, setTitle] = useState<string>('')
     const colorScheme = useColorScheme()
 
@@ -17,14 +17,18 @@ export default function StoryCard({id} : {id: number}) {
             }
         };
 
-        fetchStory();
+        if (!story){
+            fetchStory();
+        }else{
+            setTitle(story.split('\n')[0].replace(/^#\s*/, ''));
+        }
     }, [id]);
 
     return (
         <Pressable onPress={() => {
             router.push({
                 pathname: '/[id]',
-                params: { id },
+                params: { id: id, story: story },
             })
         }}
             style={[styles.card, {backgroundColor: Colors[colorScheme ?? 'light'].inputBackground}]}

@@ -27,9 +27,9 @@ export const getStory = async (id: string | string[]) => {
 }
 
 export default function StoryDetail() {
-    const { id } = useLocalSearchParams();
+    const { id, story: storyParams } = useLocalSearchParams();
     const colorScheme = useColorScheme();
-    const [story, setStory] = useState<string>('')
+    const [story, setStory] = useState('')
 
     useEffect(() => {
         const fetchStory = async () => {
@@ -39,8 +39,13 @@ export default function StoryDetail() {
             }
         };
 
-        fetchStory();
-    }, [id]);
+        if (!storyParams){
+            fetchStory();
+        }else{
+            // @ts-ignore
+            setStory(storyParams);
+        }
+    }, [id, storyParams]);
 
     const markdownStyles = StyleSheet.create({
         body: {
@@ -99,7 +104,7 @@ export default function StoryDetail() {
 const styles = StyleSheet.create({
     container: {
         padding: 16,
-        paddingVertical: 32,
+        paddingVertical: 24,
         gap: 8
     },
 });

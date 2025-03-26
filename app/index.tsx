@@ -67,10 +67,10 @@ export default function HomeScreen() {
                 { data, userId: 24 },
             );
 
-            if (response.data?.id) {
+            if (response.data?.id && response.data?.story) {
                 const storyIds = await AsyncStorage.getItem("storyIds");
                 const parsedStoryIds = storyIds ? JSON.parse(storyIds) : [];
-                await AsyncStorage.setItem("storyIds", JSON.stringify([{id : response.data.id}, ...parsedStoryIds]));
+                await AsyncStorage.setItem("storyIds", JSON.stringify([{id: response.data.id, story: response.data.story}, ...parsedStoryIds]));
                 setTab('stories')
             } else {
                 Alert.alert(t('common.error'), 'Invalid response from server',)

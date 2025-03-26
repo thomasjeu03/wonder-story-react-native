@@ -27,7 +27,7 @@ export default function StoriesScreen() {
         >
             <View style={styles.container}>
                 {/*@ts-ignore*/}
-                {storyIds.map((id: string, index: string) => (<StoryCard key={index} id={id?.id} />))}
+                {storyIds.map((story: string, index: string) => (<StoryCard key={index} id={story?.id} story={story?.story} />))}
             </View>
         </ScrollView>
     );
