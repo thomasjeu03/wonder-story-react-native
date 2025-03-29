@@ -22,55 +22,112 @@ export default function App() {
                 style={{
                     borderLeftWidth: 0,
                     width: '100%',
-                    backgroundColor: Colors[colorScheme ?? 'light'].success,
                     borderRadius: 0,
                     height: 'auto',
-                    paddingTop: safeArea.top
+                    marginTop: safeArea.top,
+                    backgroundColor: 'transparent'
                 }}
                 contentContainerStyle={{
-                    paddingHorizontal: 24,
-                    paddingVertical: 24
+                    paddingVertical: 0,
+                    paddingHorizontal: 0,
+                    borderRadius: 50,
+                    marginHorizontal: 16,
+                    alignItems: 'center',
                 }}
-                text1Style={{ fontSize: 22 }}
-                text2Style={{ fontSize: 18, opacity: 0.66 }}
+                text1Style={{
+                    backgroundColor: Colors[colorScheme ?? 'light'].success,
+                    shadowColor: Colors[colorScheme ?? 'light'].success,
+                    paddingTop: 6,
+                    paddingBottom: 8,
+                    paddingHorizontal: 12,
+                    borderRadius: 50,
+                    fontSize: 18,
+                    fontFamily: 'MabryPro',
+                    textAlign: 'center',
+                    width: 'auto',
+                    shadowOffset: {
+                        width: 0,
+                        height: 2,
+                    },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 25,
+                }}
             />
         ),
-        error: (props: ToastShowParams) => (
+        error: (props: any) => (
             <ErrorToast
                 {...props}
                 style={{
                     borderLeftWidth: 0,
                     width: '100%',
-                    backgroundColor: Colors[colorScheme ?? 'light'].danger,
                     borderRadius: 0,
                     height: 'auto',
-                    paddingTop: safeArea.top
+                    marginTop: safeArea.top,
+                    backgroundColor: 'transparent'
                 }}
                 contentContainerStyle={{
-                    paddingHorizontal: 24,
-                    paddingVertical: 24
+                    paddingVertical: 0,
+                    paddingHorizontal: 0,
+                    borderRadius: 50,
+                    marginHorizontal: 16,
+                    alignItems: 'center',
                 }}
-                text1Style={{ fontSize: 22 }}
-                text2Style={{ fontSize: 18, opacity: 0.66 }}
+                text1Style={{
+                    backgroundColor: Colors[colorScheme ?? 'light'].danger,
+                    shadowColor: Colors[colorScheme ?? 'light'].danger,
+                    paddingTop: 6,
+                    paddingBottom: 8,
+                    paddingHorizontal: 12,
+                    borderRadius: 50,
+                    fontSize: 18,
+                    fontFamily: 'MabryPro',
+                    textAlign: 'center',
+                    width: 'auto',
+                    shadowOffset: {
+                        width: 0,
+                        height: 2,
+                    },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 25,
+                }}
             />
         ),
-        info: (props: ToastShowParams) => (
-            <BaseToast
+        info: (props: any) => (
+            <ErrorToast
                 {...props}
                 style={{
                     borderLeftWidth: 0,
                     width: '100%',
-                    backgroundColor: Colors[colorScheme ?? 'light'].inputBackground,
                     borderRadius: 0,
                     height: 'auto',
-                    paddingTop: safeArea.top
+                    marginTop: safeArea.top,
+                    backgroundColor: 'transparent'
                 }}
                 contentContainerStyle={{
-                    paddingHorizontal: 24,
-                    paddingVertical: 24
+                    paddingVertical: 0,
+                    paddingHorizontal: 0,
+                    borderRadius: 50,
+                    marginHorizontal: 16,
+                    alignItems: 'center',
                 }}
-                text1Style={{ fontSize: 22 }}
-                text2Style={{ fontSize: 18, opacity: 0.66 }}
+                text1Style={{
+                    backgroundColor: Colors[colorScheme ?? 'light'].inputBackground,
+                    shadowColor: Colors[colorScheme ?? 'light'].inputBackground,
+                    paddingTop: 6,
+                    paddingBottom: 8,
+                    paddingHorizontal: 12,
+                    borderRadius: 50,
+                    fontSize: 18,
+                    fontFamily: 'MabryPro',
+                    textAlign: 'center',
+                    width: 'auto',
+                    shadowOffset: {
+                        width: 0,
+                        height: 2,
+                    },
+                    shadowOpacity: 0.8,
+                    shadowRadius: 25,
+                }}
             />
         ),
     };
@@ -84,7 +141,7 @@ export default function App() {
             <TranslationProvider>
                 <UserProvider>
                     <Stack>
-                        <Stack.Screen name="index" options={{ headerShown: false }} />
+                        {/*<Stack.Screen name="index" options={{ headerShown: false }} />*/}
                         <Stack.Screen
                             name="[id]"
                             options={{

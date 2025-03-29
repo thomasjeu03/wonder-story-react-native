@@ -8,8 +8,6 @@ import {useTranslations} from "@/contexts/LangueProvider";
 interface Step2Props {
     data: any;
     setData: (data: any) => void;
-    loadingCaracters: boolean;
-    loadingCaracterTags: boolean;
     caracters: any[];
     caracterTags: any[];
 }
