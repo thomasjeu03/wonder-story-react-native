@@ -16,7 +16,7 @@
     "version": "Version",
     "authenticate-error": "Authentifizierungsfehler",
     "back": "Zurück",
-    "next": "Weiter
+    "next": "Weiter"
   },
   "lets-go": "Los geht's!",
   "not-that-fast": "Nicht so schnell!",
@@ -76,7 +76,31 @@
   "age": "Alter",
   "yearold": "Jahre",
   "time": "Stunde",
-  "home": {
-    "welcome": "Hier beginnen wunderbare Geschichten"
-  }
+  "home-welcome": "Hier beginnen wunderbare Geschichten",
+  "choose-your-caracters": "Wähle deine Charaktere",
+  "choose-your-caracters-description": "Bitte wähle die Charaktere deiner Geschichte aus",
+  "choose-your-places": "Wähle deine Orte",
+  "choose-your-places-description": "Bitte wähle die Orte deiner Geschichte aus",
+  "customization-title": "Personalisierung deiner Geschichte",
+  "theme-selection": "Wähle ein Thema",
+  "adventure": "Abenteuer",
+  "fantasy": "Fantasie",
+  "love": "Liebe",
+  "mystery": "Geheimnis",
+  "science-fiction": "Science-Fiction",
+  "comedy": "Komödie",
+  "fairy-tale": "Märchen",
+  "education": "Bildung",
+  "drama": "Drama",
+  "historical": "Historisch",
+  "animals": "Tiere",
+  "supernatural": "Übernatürlich",
+  "your-story-is-creating": "Deine Geschichte wird gerade erstellt...",
+  "include-moral": "Moral einbeziehen",
+  "no-stories": "Keine Geschichten",
+  "imaginary": "Imaginari",
+  "professions": "Professionen",
+  "sea-world": "Meeres-Welt",
+  "country-side": "Land",
+  "urban-world": "Stadt"
 }

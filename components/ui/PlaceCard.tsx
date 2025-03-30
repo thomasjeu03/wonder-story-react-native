@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View, Pressable, Image, StyleSheet } from "react-native";
+import { View, Pressable, StyleSheet } from "react-native";
 import { CircleCheck } from "lucide-react-native";
 import {ThemedText} from "@/components/ui/ThemedText";
-import {useTranslations} from "@/contexts/LangueProvider";
+import {Image} from "expo-image";
 
 interface PlaceCardProps {
     place: {
@@ -16,7 +16,6 @@ interface PlaceCardProps {
 
 const PlaceCard: React.FC<PlaceCardProps> = ({ place, data, setData, placeTagColor }) => {
     const [selected, setSelected] = useState(false);
-    const { t } = useTranslations();
 
     useEffect(() => {
         setSelected(data?.places.includes(place?.name));
@@ -35,20 +34,23 @@ const PlaceCard: React.FC<PlaceCardProps> = ({ place, data, setData, placeTagCol
             <Image
                 source={{ uri: place?.image ? `https://wonder-story.app/img/places/${place.image}.jpg` : `https://wonder-story.app/img/places/${place.name}.jpg` }}
                 style={[styles.image, { backgroundColor: `${placeTagColor}44`, borderColor: `${placeTagColor}FF` }]}
-                resizeMode="cover"
+                contentFit="cover"
+                transition={200}
             />
             {selected && (
                 <View style={styles.checkIcon}>
                     <CircleCheck size={24} color="#D946EF" strokeWidth={2} />
                 </View>
             )}
-            <ThemedText>{t(place?.name)}</ThemedText>
+            {/*TODO: translate all places*/}
+            <ThemedText style={{textAlign: "center"}}>{place?.name}</ThemedText>
         </Pressable>
     );
 };
 
 const styles = StyleSheet.create({
     card: {
+        width: "50%",
         alignItems: "center",
         justifyContent: "center",
         minWidth: 100,

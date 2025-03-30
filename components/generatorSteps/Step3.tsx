@@ -1,5 +1,5 @@
 import React from "react";
-import { View, ScrollView, Pressable, ActivityIndicator, StyleSheet } from "react-native";
+import {StyleSheet, TouchableOpacity, FlatList} from "react-native";
 import {useTranslations} from "@/contexts/LangueProvider";
 import {ThemedText} from "@/components/ui/ThemedText";
 import DynamicIcon from "@/components/ui/dynamicIcon";
@@ -8,55 +8,51 @@ import PlaceCard from "@/components/ui/PlaceCard";
 interface Step3Props {
     data: any;
     setData: React.Dispatch<React.SetStateAction<any>>;
-    loadingPlaces: boolean;
-    loadingPlaceTags: boolean;
     places: any[];
     placeTags: any[];
 }
 
-const Step3: React.FC<Step3Props> = ({ data, setData, loadingPlaces, loadingPlaceTags, places, placeTags }) => {
+const Step3: React.FC<Step3Props> = ({ data, setData, places, placeTags }) => {
     const [activeTab, setActiveTab] = React.useState(placeTags[0]?.name || "");
     const { t } = useTranslations();
+
     return (
-        <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.header}>
-                <ThemedText type="title2">{t("choose-your-places")}</ThemedText>
-                <ThemedText type="title3">{t("choose-your-places-description")}</ThemedText>
-            </View>
+        <>
+            <ThemedText type="title2">{t("choose-your-places")}</ThemedText>
+            <ThemedText type="gray">{t("choose-your-places-description")}</ThemedText>
 
-            <ScrollView horizontal contentContainerStyle={styles.tabsList} showsHorizontalScrollIndicator={false}>
-                {loadingPlaceTags ? (
-                    <ActivityIndicator size="small" color="#888" />
-                ) : (
-                    placeTags.map((placeTag, index) => (
-                        <Pressable
-                            key={index + placeTag?.id}
-                            onPress={() => setActiveTab(placeTag?.name)}
-                            style={[
-                                styles.tabTrigger,
-                                activeTab === placeTag?.name && styles.activeTabTrigger,
-                                { backgroundColor: `${placeTag?.color}22` },
-                            ]}
-                        >
-                            <DynamicIcon name={placeTag?.icon} size={20} strokeWidth={1.5} />
-                            <ThemedText style={styles.tabText}>{t(placeTag?.name)}</ThemedText>
-                        </Pressable>
-                    ))
+            <FlatList
+                data={placeTags}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => (
+                    <TouchableOpacity
+                        onPress={() => setActiveTab(item.name)}
+                        style={{
+                            maxHeight: 38,
+                            marginHorizontal: 4,
+                            paddingVertical: 12,
+                            paddingHorizontal: 10,
+                            backgroundColor: activeTab === item.name ? item.color : "#dddddd22",
+                            borderRadius: 8,
+                            flexDirection: "row",
+                            alignItems: "center",
+                            gap: 6
+                        }}>
+                        <DynamicIcon color={"white"} name={item.icon} size={18} />
+                        <ThemedText style={{height: 14}}>{t(item.name)}</ThemedText>
+                    </TouchableOpacity>
                 )}
-            </ScrollView>
+            />
 
-            <View style={styles.placesGrid}>
-                {loadingPlaces ? (
-                    <ActivityIndicator size="large" color="#888" />
-                ) : (
-                    places
-                        .filter((place) => place?.placeTagId === placeTags.find((tag) => tag.name === activeTab)?.id)
-                        .map((place, index) => (
-                            <PlaceCard key={index + place?.id} place={place} data={data} setData={setData} placeTagColor={placeTags.find(tag => tag.name === activeTab)?.color} />
-                        ))
-                )}
-            </View>
-        </ScrollView>
+            <FlatList
+                data={places.filter((c) => c.placeTagId === placeTags.find((tag) => tag.name === activeTab)?.id)}
+                numColumns={3}
+                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => <PlaceCard place={item} data={data} setData={setData} placeTagColor={placeTags.find(tag => tag.name === activeTab)?.color} />}
+            />
+        </>
     );
 };
 
@@ -82,9 +78,6 @@ const styles = StyleSheet.create({
         paddingVertical: 8,
         paddingHorizontal: 12,
         borderRadius: 8,
-    },
-    activeTabTrigger: {
-        backgroundColor: "#D946EF",
     },
     tabText: {
         marginLeft: 6,

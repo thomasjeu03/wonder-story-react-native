@@ -1,7 +1,6 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 import { icons } from 'lucide-react-native'
-import {useColorScheme} from "@/hooks/useColorScheme";
 import {Colors} from "@/constants/Colors";
 
 interface CTAProps {
@@ -16,7 +15,6 @@ interface CTAProps {
 }
 
 const CTA: React.FC<CTAProps> = ({ label, style, icon, variant = 'base', onPress, iconPlacement = 'left', iconSize = 24, disabled = false }) => {
-    const colorScheme = useColorScheme();
     // @ts-ignore
     const LucideIcon = icons[icon]
 
@@ -25,21 +23,21 @@ const CTA: React.FC<CTAProps> = ({ label, style, icon, variant = 'base', onPress
             disabled={disabled}
             style={[
                 styles.button,
-                variant === 'base' ? { backgroundColor: Colors[colorScheme ?? 'light'].text } : undefined,
-                variant === 'primary' ? { backgroundColor: Colors[colorScheme ?? 'light'].tint } : undefined,
-                variant === 'secondary' ? { backgroundColor: Colors[colorScheme ?? 'light'].secondary } : undefined,
-                variant === 'danger' ? { backgroundColor: Colors[colorScheme ?? 'light'].danger } : undefined,
-                disabled && { backgroundColor: Colors[colorScheme ?? 'light'].inputBorder },
+                variant === 'base' ? { backgroundColor: Colors['dark'].text } : undefined,
+                variant === 'primary' ? { backgroundColor: Colors['dark'].tint } : undefined,
+                variant === 'secondary' ? { backgroundColor: Colors['dark'].secondary } : undefined,
+                variant === 'danger' ? { backgroundColor: Colors['dark'].danger } : undefined,
+                disabled && { backgroundColor: Colors['dark'].inputBorder },
                 style
             ]}
             onPress={onPress}
         >
             {icon && LucideIcon && iconPlacement === 'left' && (
-                <LucideIcon name={icon} size={iconSize} color={Colors[colorScheme ?? 'light'].background} style={styles.icon} />
+                <LucideIcon name={icon} size={iconSize} color={Colors['dark'].background} style={styles.icon} />
             )}
-            <Text style={[styles.text, {color: Colors[colorScheme ?? 'light'].background}]}>{label}</Text>
+            <Text style={[styles.text, {color: Colors['dark'].background}]}>{label}</Text>
             {icon && LucideIcon && iconPlacement === 'right' && (
-                <LucideIcon name={icon} size={iconSize} color={Colors[colorScheme ?? 'light'].background} style={styles.icon} />
+                <LucideIcon name={icon} size={iconSize} color={Colors['dark'].background} style={styles.icon} />
             )}
         </TouchableOpacity>
     );
@@ -54,7 +52,7 @@ const styles = StyleSheet.create({
         gap: 8,
         paddingVertical: 10,
         paddingHorizontal: 14,
-        borderRadius: 12,
+        borderRadius: 16,
         borderWidth: 2,
         borderStyle: 'solid',
         borderColor: 'rgba(255,255,255,0.5)',

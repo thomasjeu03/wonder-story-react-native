@@ -141,16 +141,21 @@ export default function App() {
             <TranslationProvider>
                 <UserProvider>
                     <Stack>
-                        {/*<Stack.Screen name="index" options={{ headerShown: false }} />*/}
+                        <Stack.Screen name="index" options={{ headerShown: false, contentStyle: {
+                                backgroundColor: 'black',
+                            } }} />
                         <Stack.Screen
                             name="[id]"
                             options={{
                                 presentation: 'modal',
                                 headerShown: false,
+                                contentStyle: {
+                                    backgroundColor: 'black',
+                                }
                             }}
                         />
                     </Stack>
-                    <StatusBar style="auto" />
+                    <StatusBar style="dark" />
                     <Toast topOffset={0} visibilityTime={5000} config={toastConfig} />
                 </UserProvider>
             </TranslationProvider>

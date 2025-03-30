@@ -3,9 +3,12 @@ import {View, ScrollView, StyleSheet} from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import {useEffect, useState} from "react";
 import StoryCard from "@/components/StoryCard";
+import {ThemedText} from "@/components/ui/ThemedText";
+import {useTranslations} from "@/contexts/LangueProvider";
 
 export default function StoriesScreen() {
     const [storyIds, setStoryIds] = useState([])
+    const {t} = useTranslations()
 
     useEffect(() => {
         const loadStoryIds = async () => {
@@ -26,6 +29,7 @@ export default function StoriesScreen() {
             style={{ height: "100%" }}
         >
             <View style={styles.container}>
+                {storyIds.length === 0 && <ThemedText type="gray" style={{textAlign: "center"}}>{t('no-stories')}</ThemedText>}
                 {/*@ts-ignore*/}
                 {storyIds.map((story: string, index: string) => (<StoryCard key={index} id={story?.id} story={story?.story} />))}
             </View>

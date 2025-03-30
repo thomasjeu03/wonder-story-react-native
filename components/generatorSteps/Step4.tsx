@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, FlatList, Switch } from "react-native";
+import { View, StyleSheet, Switch } from "react-native";
 import Slider from "@react-native-community/slider";
 import TagGenre from "@/components/ui/TagGenre";
 import { ThemedText } from "@/components/ui/ThemedText";
@@ -29,19 +29,19 @@ const Step4: React.FC<Step4Props> = ({ data, setData }) => {
     const { t } = useTranslations();
 
     return (
-        <View style={styles.container}>
+        <>
             <ThemedText type="title2">{t("customization-title")}</ThemedText>
 
             {/* Age Slider */}
-            <View style={styles.sliderContainer}>
+            <View style={styles.section}>
                 <View style={styles.sliderHeader}>
-                    <ThemedText type="title5">{t("age")}</ThemedText>
+                    <ThemedText style={styles.sectionTitle}>{t("age")}</ThemedText>
                     <ThemedText type="title4">{data?.ageRange} {t("yearold")}</ThemedText>
                 </View>
                 <Slider
-                    style={styles.slider}
                     minimumValue={0}
                     maximumValue={10}
+                    minimumTrackTintColor={'#BF40BF'}
                     step={1}
                     value={data?.ageRange}
                     onValueChange={(value) => setData({ ...data, ageRange: value })}
@@ -49,15 +49,15 @@ const Step4: React.FC<Step4Props> = ({ data, setData }) => {
             </View>
 
             {/* Time Slider */}
-            <View style={styles.sliderContainer}>
+            <View style={styles.section}>
                 <View style={styles.sliderHeader}>
-                    <ThemedText type="title5">{t("time")}</ThemedText>
+                    <ThemedText style={styles.sectionTitle}>{t("time")}</ThemedText>
                     <ThemedText type="title4">{data?.time} min</ThemedText>
                 </View>
                 <Slider
-                    style={styles.slider}
                     minimumValue={0}
                     maximumValue={10}
+                    minimumTrackTintColor={'#BF40BF'}
                     step={1}
                     value={data?.time}
                     onValueChange={(value) => setData({ ...data, time: value })}
@@ -67,17 +67,15 @@ const Step4: React.FC<Step4Props> = ({ data, setData }) => {
             {/* Theme Selection */}
             <View style={styles.section}>
                 <ThemedText style={styles.sectionTitle}>{t('theme-selection')}</ThemedText>
-                <FlatList
-                    data={genres}
-                    numColumns={3}
-                    keyExtractor={(item) => item.label}
-                    renderItem={({ item }) => <TagGenre genre={item} data={data} setData={setData} />}
-                    contentContainerStyle={styles.genreList}
-                />
+                <View style={styles.genreList}>
+                    {genres.map((item, index) => (
+                        <TagGenre key={index} genre={item} data={data} setData={setData} />
+                    ))}
+                </View>
             </View>
 
             {/* Moral Selection */}
-            <View style={styles.switchContainer}>
+            <View style={styles.sliderHeader}>
                 <ThemedText style={styles.sectionTitle}>{t("include-moral")}</ThemedText>
                 <Switch
                     value={data?.moralIncluded}
@@ -86,44 +84,33 @@ const Step4: React.FC<Step4Props> = ({ data, setData }) => {
                     thumbColor={data?.moralIncluded ? "#fff" : "#999"}
                 />
             </View>
-        </View>
+        </>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        paddingHorizontal: 20,
-        paddingTop: 10,
+        padding: 16,
+        gap: 24,
     },
-    sliderContainer: {
-        width: "100%",
-        marginVertical: 10,
+    section: {
+        gap: 8
     },
     sliderHeader: {
         flexDirection: "row",
+        alignItems: "center",
         justifyContent: "space-between",
-    },
-    slider: {
-        width: "100%",
-    },
-    section: {
-        marginVertical: 15,
     },
     sectionTitle: {
         color: "#666",
         fontSize: 16,
         fontWeight: "600",
-        marginBottom: 8,
     },
     genreList: {
-        gap: 10,
-    },
-    switchContainer: {
+        gap: 8,
         flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginVertical: 20,
+        flexWrap: "wrap",
     },
 });
 

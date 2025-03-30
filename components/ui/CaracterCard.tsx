@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { View, Image, Pressable, StyleSheet } from "react-native";
+import { View, Pressable, StyleSheet } from "react-native";
 import { CircleCheck } from "lucide-react-native";
 import {ThemedText} from "@/components/ui/ThemedText";
-import {useTranslations} from "@/contexts/LangueProvider";
+import {Image} from "expo-image"
 
 interface Caracter {
     name: string;
@@ -19,18 +19,16 @@ interface CaracterCardProps {
 const CaracterCard: React.FC<CaracterCardProps> = ({ caracter, data, setData, caracterTagColor }) => {
     const [selected, setSelected] = useState(false);
 
-    const {t} = useTranslations()
-
     useEffect(() => {
-        setSelected(data?.caracters.includes(t(caracter?.name)));
-    }, [caracter?.name, data?.caracters, t]);
+        setSelected(data?.caracters.includes(caracter?.name));
+    }, [caracter?.name, data?.caracters]);
 
     const handlePress = () => {
         setData((prev) => ({
             ...prev,
             caracters: selected
-                ? prev.caracters.filter((c) => c !== t(caracter?.name))
-                : [...prev.caracters, t(caracter?.name)],
+                ? prev.caracters.filter((c) => c !== caracter?.name)
+                : [...prev.caracters, caracter?.name],
         }));
         setSelected(!selected);
     };
@@ -50,7 +48,8 @@ const CaracterCard: React.FC<CaracterCardProps> = ({ caracter, data, setData, ca
             <Image
                 source={{ uri: `https://wonder-story.app/img/caracters/${caracter.image || caracter.name}.jpg` }}
                 style={styles.image}
-                resizeMode="cover"
+                contentFit="cover"
+                transition={200}
             />
             {selected && (
                 <View style={styles.checkIcon}>
@@ -58,7 +57,8 @@ const CaracterCard: React.FC<CaracterCardProps> = ({ caracter, data, setData, ca
                 </View>
             )}
             <View style={styles.textContainer}>
-                <ThemedText>{t(caracter?.name)}</ThemedText>
+                {/*TODO: translate all caracters*/}
+                <ThemedText>{caracter?.name}</ThemedText>
             </View>
         </Pressable>
     );
@@ -66,8 +66,8 @@ const CaracterCard: React.FC<CaracterCardProps> = ({ caracter, data, setData, ca
 
 const styles = StyleSheet.create({
     card: {
-        width: "100%",
-        minWidth: 160,
+        margin: 6,
+        width: '30%',
         borderWidth: 2,
         borderRadius: 8,
         overflow: "hidden",
@@ -80,8 +80,6 @@ const styles = StyleSheet.create({
         borderColor: "#D946EF",
     },
     image: {
-        width: "100%",
-        height: 200,
         aspectRatio: 1,
     },
     checkIcon: {

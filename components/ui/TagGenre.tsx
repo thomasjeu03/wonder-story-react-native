@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { TouchableOpacity, StyleSheet } from "react-native";
+import {TouchableOpacity, StyleSheet, View} from "react-native";
 import { Plus, X } from "lucide-react-native";
-import Animated, { Layout, FadeIn, FadeOut } from "react-native-reanimated";
 import { useTranslations } from "@/contexts/LangueProvider";
 import {ThemedText} from "@/components/ui/ThemedText";
 
@@ -41,9 +40,11 @@ const TagGenre: React.FC<TagGenreProps> = ({ genre, data, setData }) => {
             ]}
             activeOpacity={0.7}
         >
-            <Animated.View layout={Layout.springify()} entering={FadeIn} exiting={FadeOut}>
-                {!selected && <Plus color={`${genre?.color}88`} size={14} />}
-            </Animated.View>
+            {!selected && (
+                <View>
+                    <Plus color={`${genre?.color}`} size={14} />
+                </View>
+            )}
 
             <ThemedText
                 style={[
@@ -54,9 +55,11 @@ const TagGenre: React.FC<TagGenreProps> = ({ genre, data, setData }) => {
                 {t(genre?.label)}
             </ThemedText>
 
-            <Animated.View layout={Layout.springify()} entering={FadeIn} exiting={FadeOut}>
-                {selected && <X color={`${genre?.color}dd`} size={14} />}
-            </Animated.View>
+            {selected && (
+                <View>
+                    <X color={`${genre?.color}dd`} size={14} />
+                </View>
+            )}
         </TouchableOpacity>
     );
 };
@@ -66,12 +69,12 @@ const styles = StyleSheet.create({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center",
+        overflow: "hidden",
         paddingVertical: 6,
         paddingHorizontal: 10,
         borderRadius: 20,
         borderWidth: 1,
         minWidth: 40,
-        margin: 5,
     },
     genreText: {
         fontSize: 14,

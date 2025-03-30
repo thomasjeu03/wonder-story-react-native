@@ -1,10 +1,11 @@
-import { useLocalSearchParams } from 'expo-router';
-import {View, StyleSheet, ScrollView, Alert, ActivityIndicator} from 'react-native';
+import {router, useLocalSearchParams} from 'expo-router';
+import {View, StyleSheet, ScrollView, Alert, ActivityIndicator, Pressable} from 'react-native';
 import axios from "axios";
 import {useEffect, useState} from "react";
 import Markdown from "react-native-markdown-display";
-import {Colors} from "@/constants/Colors";
-import {useColorScheme} from "@/hooks/useColorScheme";
+import {useTranslations} from "@/contexts/LangueProvider";
+import {ThemedText} from "@/components/ui/ThemedText";
+import {CircleX} from "lucide-react-native";
 
 export const getStory = async (id: string | string[]) => {
     try {
@@ -28,7 +29,7 @@ export const getStory = async (id: string | string[]) => {
 
 export default function StoryDetail() {
     const { id, story: storyParams } = useLocalSearchParams();
-    const colorScheme = useColorScheme();
+    const { t } = useTranslations();
     const [story, setStory] = useState('')
 
     useEffect(() => {
@@ -52,7 +53,7 @@ export default function StoryDetail() {
             fontSize: 16,
             lineHeight: 16,
             fontWeight: '500',
-            color: Colors[colorScheme ?? 'light'].text
+            color: 'white'
         },
         heading1: {
             fontSize: 30,
@@ -88,6 +89,13 @@ export default function StoryDetail() {
         <ScrollView
             contentInsetAdjustmentBehavior="automatic"
         >
+            <Pressable
+                style={{flexDirection: 'row', alignItems: 'center', gap: 4, opacity: 0.66, padding: 16}}
+                onPress={() => router.back()}
+            >
+                <CircleX color="white" size={22} />
+                <ThemedText style={{marginTop: 4}}>{t('common.close')}</ThemedText>
+            </Pressable>
             <View style={styles.container}>
                 {story ? (
                     <Markdown style={markdownStyles}>

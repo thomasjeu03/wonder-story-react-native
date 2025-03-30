@@ -133,9 +133,9 @@ export default function HomeScreen() {
     const steps = [
         {id: 1, content: <Step1 />},
         {id: 2, content: <Step2 data={data} setData={setData} caracterTags={caracterTags} caracters={caracters} />},
-        {id: 3, content: <Step3 data={data} setData={setData} loadingPlaces={loadingPlaces} loadingPlaceTags={loadingPlaceTags} placeTags={placeTags} places={places} />},
+        {id: 3, content: <Step3 data={data} setData={setData} placeTags={placeTags} places={places} />},
         {id: 4, content: <Step4 data={data} setData={setData} />},
-        {id: 5, content: <Step5 data={data} caractersDataBase={caracters} caracterTagsDataBase={caracterTags} placeTagsDataBase={placeTags} placesDataBase={places} />},
+        {id: 5, content: <Step5 />},
     ];
 
     const handleNext = () => {
@@ -199,7 +199,7 @@ export default function HomeScreen() {
 
     return (
         <>
-            <SafeAreaView>
+            <SafeAreaView style={{flex: 1}}>
                 <View style={{ flexDirection: 'row', alignItems: 'center', gap: 16, padding: 16}}>
                     <Pressable onPress={() => setTab('generate')}>
                         <ThemedText style={tab === 'generate' ? {} : {opacity: 0.5}} type='title2'>
@@ -214,7 +214,7 @@ export default function HomeScreen() {
                 </View>
 
                 {tab === 'generate' && (
-                    <View style={{height: '95%', paddingBottom: safearea.bottom, position: 'relative'}}>
+                    <View style={{paddingBottom: safearea.bottom, position: 'relative'}}>
                         <StepContainer
                             loading={loading}
                             steps={steps}

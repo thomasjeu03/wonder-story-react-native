@@ -14,7 +14,7 @@ export async function getStoryById(id) {
 
 export async function getStories(where = {}, offset = 0, limit = 15, orderBy = {}) {
     try {
-        const response = await axios.get(`/api/stories`, {
+        const response = await axios.get(`${URL}/api/stories`, {
             params: {
                 where: JSON.stringify(where),
                 offset: String(offset),
@@ -31,7 +31,7 @@ export async function getStories(where = {}, offset = 0, limit = 15, orderBy = {
 
 export async function getCaracterTags(where = {}, offset = 0, limit = 15, orderBy = {}) {
     try {
-        const response = await axios.get(`/api/caracterTags`, {
+        const response = await axios.get(`${URL}/api/caracterTags`, {
             params: {
                 where: JSON.stringify(where),
                 offset: String(offset),
@@ -48,7 +48,7 @@ export async function getCaracterTags(where = {}, offset = 0, limit = 15, orderB
 
 export async function getCaracters(where = {}, offset = 0, limit = 15, orderBy = {}) {
     try {
-        const response = await axios.get(`/api/caracters`, {
+        const response = await axios.get(`${URL}/api/caracters`, {
             params: {
                 where: JSON.stringify(where),
                 offset: String(offset),
@@ -65,7 +65,7 @@ export async function getCaracters(where = {}, offset = 0, limit = 15, orderBy =
 
 export async function getPlaceTags(where = {}, offset = 0, limit = 15, orderBy = {}) {
     try {
-        const response = await axios.get(`/api/placeTags`, {
+        const response = await axios.get(`${URL}/api/placeTags`, {
             params: {
                 where: JSON.stringify(where),
                 offset: String(offset),
@@ -82,7 +82,7 @@ export async function getPlaceTags(where = {}, offset = 0, limit = 15, orderBy =
 
 export async function getPlaces(where = {}, offset = 0, limit = 15, orderBy = {}) {
     try {
-        const response = await axios.get(`/api/places`, {
+        const response = await axios.get(`${URL}/api/places`, {
             params: {
                 where: JSON.stringify(where),
                 offset: String(offset),

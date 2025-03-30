@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import {View, Pressable, FlatList, Animated, ScrollView} from "react-native";
+import React, { useState } from "react";
+import {FlatList, TouchableOpacity} from "react-native";
 import CaracterCard from "@/components/ui/CaracterCard";
 import {ThemedText} from "@/components/ui/ThemedText";
 import DynamicIcon from "@/components/ui/dynamicIcon";
@@ -14,19 +14,10 @@ interface Step2Props {
 
 const Step2: React.FC<Step2Props> = ({ data, setData, caracters, caracterTags }) => {
     const [selectedTag, setSelectedTag] = useState(caracterTags[0]?.name || "");
-    const fadeAnim = useRef(new Animated.Value(0)).current;
     const { t } = useTranslations();
 
-    useEffect(() => {
-        Animated.timing(fadeAnim, {
-            toValue: 1,
-            duration: 1000,
-            useNativeDriver: true,
-        }).start();
-    }, []);
-
     return (
-        <View style={{ padding: 20 }}>
+        <>
             <ThemedText type="title2">{t("choose-your-caracters")}</ThemedText>
             <ThemedText type="gray">{t("choose-your-caracters-description")}</ThemedText>
 
@@ -37,19 +28,22 @@ const Step2: React.FC<Step2Props> = ({ data, setData, caracters, caracterTags })
                 showsHorizontalScrollIndicator={false}
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => (
-                    <Pressable
+                    <TouchableOpacity
                         onPress={() => setSelectedTag(item.name)}
                         style={{
-                            padding: 10,
-                            backgroundColor: selectedTag === item.name ? item.color : "#ddd",
-                            margin: 5,
+                            maxHeight: 38,
+                            marginHorizontal: 4,
+                            paddingVertical: 12,
+                            paddingHorizontal: 10,
+                            backgroundColor: selectedTag === item.name ? item.color : "#dddddd22",
                             borderRadius: 8,
                             flexDirection: "row",
                             alignItems: "center",
+                            gap: 6
                         }}>
-                        <DynamicIcon name={item.icon} size={20} strokeWidth={1.5} />
-                        <ThemedText style={{ marginLeft: 5 }}>{t(item.name)}</ThemedText>
-                    </Pressable>
+                        <DynamicIcon color={"white"} name={item.icon} size={18} />
+                        <ThemedText style={{height: 14}}>{t(item.name)}</ThemedText>
+                    </TouchableOpacity>
                 )}
             />
 
@@ -60,7 +54,7 @@ const Step2: React.FC<Step2Props> = ({ data, setData, caracters, caracterTags })
                 keyExtractor={(item) => item.id.toString()}
                 renderItem={({ item }) => <CaracterCard caracter={item} data={data} setData={setData} caracterTagColor={caracterTags.find(tag => tag.id === item.caracterTagId)?.color} />}
             />
-        </View>
+        </>
     );
 };
 
