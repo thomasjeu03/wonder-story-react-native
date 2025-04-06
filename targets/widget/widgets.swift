@@ -37,6 +37,11 @@ struct SimpleEntry: TimelineEntry {
 struct widgetEntryView : View {
     var entry: Provider.Entry
 
+    func getTitle() -> String {
+        let defaults = UserDefaults(suiteName: "group.com.wonder.story.widget")
+        return defaults?.string(forKey: "widgetLabel") ?? "Create a story"
+    }
+
     var body: some View {
       VStack(alignment: .leading, spacing: 8) {
             Image(systemName: "sparkles")
@@ -47,7 +52,7 @@ struct widgetEntryView : View {
 
             Spacer()
 
-            Text("Créer une histoire")
+            Text(getTitle())
                 .font(.title3)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.leading)

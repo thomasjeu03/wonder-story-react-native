@@ -16,6 +16,9 @@ import Step4 from "@/components/generatorSteps/Step4";
 import Step5 from "@/components/generatorSteps/Step5";
 import StepContainer from "@/components/StepContainer";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {ExtensionStorage} from "@bacons/apple-targets";
+
+const widgetStorage = new ExtensionStorage('group.com.wonder.story.widget');
 
 export default function HomeScreen() {
     const locale = getLocales()[0]?.languageCode || 'en';
@@ -35,6 +38,11 @@ export default function HomeScreen() {
         moral: true,
         inputCustom: ''
     })
+
+    useEffect(() => {
+        widgetStorage.set('widgetLabel', t('create-story'));
+        ExtensionStorage.reloadWidget();
+    }, []);
 
     useEffect(() => {
         if (currentStep === 0) {
