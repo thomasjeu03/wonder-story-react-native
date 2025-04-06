@@ -3,6 +3,7 @@ import { View, Pressable, StyleSheet } from "react-native";
 import { CircleCheck } from "lucide-react-native";
 import {ThemedText} from "@/components/ui/ThemedText";
 import {Image} from "expo-image";
+import {useTranslations} from "@/contexts/LangueProvider";
 
 interface PlaceCardProps {
     place: {
@@ -16,15 +17,16 @@ interface PlaceCardProps {
 
 const PlaceCard: React.FC<PlaceCardProps> = ({ place, data, setData, placeTagColor }) => {
     const [selected, setSelected] = useState(false);
+    const {t} = useTranslations();
 
     useEffect(() => {
-        setSelected(data?.places.includes(place?.name));
+        setSelected(data?.places.includes(t(place?.name)));
     }, [place?.name, data?.places]);
 
     const togglePlace = () => {
         setData(prev => ({
             ...prev,
-            places: selected ? prev.places.filter(c => c !== place?.name) : [...prev.places, place?.name]
+            places: selected ? prev.places.filter(c => c !== t(place?.name)) : [...prev.places, t(place?.name)]
         }));
         setSelected(!selected);
     };
@@ -42,8 +44,7 @@ const PlaceCard: React.FC<PlaceCardProps> = ({ place, data, setData, placeTagCol
                     <CircleCheck size={24} color="#D946EF" strokeWidth={2} />
                 </View>
             )}
-            {/*TODO: translate all places*/}
-            <ThemedText style={{textAlign: "center"}}>{place?.name}</ThemedText>
+            <ThemedText style={{textAlign: "center"}}>{t(place?.name)}</ThemedText>
         </Pressable>
     );
 };

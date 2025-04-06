@@ -4,7 +4,7 @@
     "description": "Make bedtime magical with AI-powered stories",
     "slug": "wonder-story",
     "owner": "thomas_jeu",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "orientation": "portrait",
     "primaryColor": "#BF40BF",
     "platforms": [
@@ -18,10 +18,16 @@
       "resizeMode": "contain"
     },
     "icon": "./assets/icons/icon.png",
-    "scheme": "myapp",
+    "scheme": "wonderstory",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "appleTeamId": "X9A9NNA76U",
+      "entitlements": {
+        "com.apple.security.application-groups": [
+          "group.com.wonder.story.widget"
+        ]
+      },
       "supportsTablet": true,
       "bundleIdentifier": "app.wonder-story.Wonder-Story",
       "buildNumber": "26",
@@ -63,7 +69,7 @@
         "foregroundImage": "./assets/icons/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": ""
+      "package": "app.wonderstory.WonderStory"
     },
     "web": {
       "name": "Wonder Story",
@@ -83,14 +89,15 @@
           "image": "./assets/icons/splash-icon-light.png",
           "imageWidth": 200,
           "resizeMode": "contain",
-          "backgroundColor": "#ffffff",
+          "backgroundColor": "#000000",
           "dark": {
             "image": "./assets/icons/splash-icon-dark.png",
             "backgroundColor": "#000000"
           }
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "@bacons/apple-targets"
     ],
     "experiments": {
       "typedRoutes": true

@@ -3,6 +3,7 @@ import { View, Pressable, StyleSheet } from "react-native";
 import { CircleCheck } from "lucide-react-native";
 import {ThemedText} from "@/components/ui/ThemedText";
 import {Image} from "expo-image"
+import {useTranslations} from "@/contexts/LangueProvider";
 
 interface Caracter {
     name: string;
@@ -18,17 +19,18 @@ interface CaracterCardProps {
 
 const CaracterCard: React.FC<CaracterCardProps> = ({ caracter, data, setData, caracterTagColor }) => {
     const [selected, setSelected] = useState(false);
+    const {t} = useTranslations();
 
     useEffect(() => {
-        setSelected(data?.caracters.includes(caracter?.name));
+        setSelected(data?.caracters.includes(t(caracter?.name)));
     }, [caracter?.name, data?.caracters]);
 
     const handlePress = () => {
         setData((prev) => ({
             ...prev,
             caracters: selected
-                ? prev.caracters.filter((c) => c !== caracter?.name)
-                : [...prev.caracters, caracter?.name],
+                ? prev.caracters.filter((c) => c !== t(caracter?.name))
+                : [...prev.caracters, t(caracter?.name)],
         }));
         setSelected(!selected);
     };
@@ -57,8 +59,7 @@ const CaracterCard: React.FC<CaracterCardProps> = ({ caracter, data, setData, ca
                 </View>
             )}
             <View style={styles.textContainer}>
-                {/*TODO: translate all caracters*/}
-                <ThemedText>{caracter?.name}</ThemedText>
+                <ThemedText>{t(caracter?.name)}</ThemedText>
             </View>
         </Pressable>
     );
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
         padding: 4,
     },
     textContainer: {
-        padding: 8,
+        padding: 4,
     },
 });
 
